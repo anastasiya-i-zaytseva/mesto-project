@@ -1,0 +1,7 @@
+.element-flex {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-right: 15px;
+  margin-left: 21px;
+}

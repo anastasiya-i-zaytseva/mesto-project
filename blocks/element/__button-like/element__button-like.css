@@ -1,0 +1,29 @@
+.element__button-like {
+  width: 22px;
+  height: 19px;
+  border: none;
+  /*background-color: #000000;*/
+  background-image: url(../../../images/serde4ko.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  cursor: pointer;
+  margin-left: auto;
+  transition: opacity .7s linear;
+}
+
+
+/*}*/
+/*!*grid-area: button;*!*/
+
+.element__button-like:hover {
+  opacity: .5;
+}
+
+/*@media screen and (max-width: 760px) {*/
+/*  .profile__button-redact {*/
+/*    width: 18px;*/
+/*    height: 18px;*/
+/*    background-size: 8px 8px;*/
+/*    align-self:inherit;*/
+/*  }*/
+/*}*/

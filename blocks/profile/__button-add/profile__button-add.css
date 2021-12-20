@@ -1,0 +1,35 @@
+.profile__button-edd {
+  width: 150px;
+  height: 50px;
+  margin-left: auto;
+  border: 2px solid #FFFFFF;
+  background-color: black;
+  background-image: url(../../../images/add.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  cursor: pointer;
+  transition: opacity .7s linear;
+}
+
+.profile__button-edd:hover {
+  opacity: .6;
+}
+
+@media screen and (max-width:730px) {
+  .profile__button-edd {
+    margin: auto;
+    width: 282px;
+  }
+}
+/*.profile__button-redact {*/
+/*  background-size: 10px 10px;*/
+/*}*/
+/*grid-area: button;*/
+/*@media screen and (max-width: 760px) {*/
+/*  .profile__button-redact {*/
+/*    width: 18px;*/
+/*    height: 18px;*/
+/*    background-size: 8px 8px;*/
+/*    align-self:inherit;*/
+/*  }*/
+/*}*/
