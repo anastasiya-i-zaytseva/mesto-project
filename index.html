@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>mesto</title>
+  <title>mesto-project</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" type="text/css" href="./pages/index.css">
 </head>
@@ -17,9 +17,7 @@
       <img src="./images/jak-iv-kusto.jpg" class="profile__avatar" alt="Жак-ив-Кусто">
       <div class="profile__info">
         <h1 class="profile__title">Жак-Ив Кусто</h1>
-<!--        <div class="popup">-->
           <button type="button" aria-label="Редактировать профиль" class="profile__button-redact"></button>
-<!--        </div>-->
         <p class="profile__subtitle">Исследователь океана</p>
       </div>
       <button type="button" aria-label="Добавить новую локацию" class="profile__button-edd"></button>
@@ -30,42 +28,42 @@
           <img src="./images/kara4aevsk.jpg" class="element__image" alt="Карачаевск">
           <div class="element-flex">
             <p class="element__city">Карачаевск</p>
-            <button type="button" aria-label="Лайк" class="element__button-like"></button>
+            <button type="button" aria-label="Лайк" class="element__button-like element__button-like_active"></button>
           </div>
         </li>
         <li class="element__info">
           <img src="./images/gora%20el'brus.jpg" class="element__image" alt="Гора">
           <div class="element-flex">
             <p class="element__city">Гора Эльбрус</p>
-            <button type="button" aria-label="Лайк" class="element__button-like"></button>
+            <button type="button" aria-label="Лайк" class="element__button-like element__button-like_active"></button>
           </div>
         </li>
         <li class="element__info">
           <img src="./images/dombai.jpg" class="element__image" alt="Домбай">
           <div class="element-flex">
             <p class="element__city">Домбай</p>
-            <button type="button" aria-label="Лайк" class="element__button-like"></button>
+            <button type="button" aria-label="Лайк" class="element__button-like element__button-like_active"></button>
           </div>
         </li>
         <li class="element__info">
           <img src="./images/gora%20el'brus.jpg" class="element__image" alt="Гора">
           <div class="element-flex">
             <p class="element__city">Гора Эльбрус</p>
-            <button type="button" aria-label="Лайк" class="element__button-like"></button>
+            <button type="button" aria-label="Лайк" class="element__button-like element__button-like_active"></button>
           </div>
         </li>
         <li class="element__info">
           <img src="./images/dombai.jpg" class="element__image" alt="Домбай">
           <div class="element-flex">
             <p class="element__city">Домбай</p>
-            <button type="button" aria-label="Лайк" class="element__button-like"></button>
+            <button type="button" aria-label="Лайк" class="element__button-like element__button-like_active"></button>
           </div>
         </li>
         <li class="element__info">
           <img src="./images/kara4aevsk.jpg" class="element__image" alt="Карачаево">
           <div class="element-flex">
             <p class="element__city">Карачаево-Черкессия</p>
-            <button type="button" aria-label="Лайк" class="element__button-like"></button>
+            <button type="button" aria-label="Лайк" class="element__button-like element__button-like_active"></button>
           </div>
         </li>
       </ul>
@@ -74,8 +72,7 @@
   <footer class="footer">
     <p class="footer__text">© 2020 Mesto Russia</p>
   </footer>
-
-  <div class="popup">
+  <div class="popup popup_opened">
     <div class="popup__container">
       <button class="popup__button-close"></button>
       <h2 class="popup__title">Редактировать профиль</h2>
