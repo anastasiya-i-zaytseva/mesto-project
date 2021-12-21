@@ -10,6 +10,7 @@
   cursor: pointer;
   transition: opacity .7s linear;
 }
+  /*grid-area: button;*/
 
 .profile__button-redact:hover {
   opacity: .6;

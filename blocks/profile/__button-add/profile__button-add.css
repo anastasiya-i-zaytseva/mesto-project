@@ -21,3 +21,15 @@
     width: 282px;
   }
 }
+/*.profile__button-redact {*/
+/*  background-size: 10px 10px;*/
+/*}*/
+/*grid-area: button;*/
+/*@media screen and (max-width: 760px) {*/
+/*  .profile__button-redact {*/
+/*    width: 18px;*/
+/*    height: 18px;*/
+/*    background-size: 8px 8px;*/
+/*    align-self:inherit;*/
+/*  }*/
+/*}*/

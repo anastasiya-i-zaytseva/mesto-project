@@ -4,16 +4,102 @@
   right: 0;
   left: 0;
   z-index: 1;
-  display: none;
+  display: flex;
   justify-content: center;
   align-items: center;
   position: fixed;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgb(0, 0, 0, 50%);
+  /*opacity: 0.5;*/
   padding: 34px 36px 37px;
 }
+.popup__container {
+  display: flex;
+  flex-direction: column;
+  background: #FFFFFF;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.15);
+  border-radius: 10px;
+  width: 430px;
+  height: 330px;
+  z-index: 2;
+  position: relative;
 
-@media screen and (max-width:730px) {
-  .popup {
-    padding: 25px 22px;
-  }
 }
+
+.popup__button-close {
+  border: none;
+  position: absolute;
+  top: -40px;
+  right: -40px;
+  width: 32px;
+  padding: 0;
+  height: 32px;
+  background-color: black;
+  background-image: url("../../images/Close Icon.svg");
+}
+
+.popup__title {
+  font-style: normal;
+  font-weight: 900;
+  font-size: 24px;
+  line-height: 29px;
+  margin: 0;
+  padding-bottom: 54px;
+  color: #000000;
+}
+
+.popup__admin {
+  margin-bottom: 48px;
+}
+
+.popup__item {
+  margin-bottom: 30px;
+  border: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  width: 100%;
+  padding-bottom: 13px;
+}
+
+.popup__item:last-child {
+  margin-bottom: 0;
+}
+
+.popup__button-save {
+  width: 358px;
+  height: 50px;
+  background-color: black;
+  color: white;
+  border: none;
+
+}
+
+/*.save-button {*/
+/*  width: 358px;*/
+/*  height: 50px;*/
+/*  background-color: black;*/
+/*  color: white;*/
+/*  border: none;*/
+/*  margin-left: 36px;*/
+/*  margin-right: 36px;*/
+/*}*/
+/*.save-button:hover {*/
+/*  transition: 1s ease-out;*/
+/*  opacity: 0.5;*/
+/*}*/
+/*.save-button__title {*/
+/*  font-style: normal;*/
+/*  font-weight: normal;*/
+/*  font-size: 18px;*/
+/*  line-height: 22px;*/
+/*  text-align: center;*/
+/*  margin: 0;*/
+/*}*/
+
+/*.close__icon {*/
+/*  width: 100%;*/
+/*}*/
+/*.close:hover {*/
+/*  transition: 1s ease-out;*/
+/*  opacity: 0.6;*/
+/*}*/
+/*.form__overplay {*/
+/*}*/
