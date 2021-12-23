@@ -6,6 +6,12 @@
   padding: 0 0 13px;
 }
 
-.popup__item:last-child {
-  margin-bottom: 0;
-}
+/*.popup__item:last-child {*/
+/*  margin-bottom: 48px;*/
+/*}*/
+
+/*@media screen and (max-width:730px) {*/
+/*  .popup__item:last-child {*/
+/*    margin-bottom: 45px;*/
+/*  }*/
+/*}*/

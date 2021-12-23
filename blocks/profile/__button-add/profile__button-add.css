@@ -9,6 +9,7 @@
   background-position: center;
   cursor: pointer;
   transition: opacity .7s linear;
+  padding: 0;
 }
 
 .profile__button-edd:hover {
