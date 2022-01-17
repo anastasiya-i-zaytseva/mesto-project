@@ -3,8 +3,16 @@ const popupCloseButton = document.querySelector('.popup__button-close');
 const popupWindow = document.querySelector('.popup');
 const nameInput = document.querySelector('#title');
 const jobInput = document.querySelector('#subtitle');
-
-
+const elementList = document.querySelector('.element');
+const elementTemplate = document.querySelector('.element-template').content;
+const popupOpenButtonAdd = document.querySelector('.profile__button-edd');
+const popupCloseButtonAdd = document.querySelector('#popup-add-place-close');
+const popupWindowAdd = document.querySelector('#popup-add-place');
+const nameNewPlace = document.querySelector('#new-place-name');
+const linkNewPlace = document.querySelector('#new-place-href');
+const formElementAdd = document.querySelector('#popup-add-place-admin');
+const popupCloseButtonImage = document.querySelector('#popup__image-close');
+// const likeButton = document.querySelector('.element__button-like');
 
 // слушаем кнопку редактировать;
 popupOpenButton.addEventListener('click', function(){
@@ -17,9 +25,10 @@ popupCloseButton.addEventListener('click', function() {
     togglePopup(popupWindow);
 });
 
-// тумблер открыть-закрыть
+// тумблер открыть-закрыть попап
 function togglePopup(popup) {
-    popup.classList.toggle('popup_opened');
+    //popup.classList.toggle('popup_opened');
+    elementClassToggle(popup, 'popup_opened');
 }
 
 //кнопка Сохранить
@@ -34,9 +43,6 @@ function formSubmitHandler (evt) {
 formElement.addEventListener('submit', formSubmitHandler);
 
 // 6 новых карточек
-const elementList = document.querySelector('.element');
-const elementTemplate = document.querySelector('.element-template').content;
-
 const initialCards = [
     {
         name: 'Архыз',
@@ -63,7 +69,6 @@ const initialCards = [
         link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
     }
 ];
-
 initialCards.forEach(function (element) {
     appendElementToElementList(element.name, element.link);
 })
@@ -79,11 +84,6 @@ function appendElementToElementList(placeName, picLink){
 }
 
 //открытие и закрытие добавление новой карточки
-const popupOpenButtonAdd = document.querySelector('.profile__button-edd');
-const popupCloseButtonAdd = document.querySelector('#popup-add-place-close');
-const popupWindowAdd = document.querySelector('#popup-add-place');
-const nameNewPlace = document.querySelector('#new-place-name');
-const linkNewPlace = document.querySelector('#new-place-href');
 
 popupOpenButtonAdd.addEventListener('click', function(){
     togglePopup(popupWindowAdd);
@@ -94,8 +94,6 @@ popupCloseButtonAdd.addEventListener('click', function() {
     togglePopup(popupWindowAdd);
 });
 
-const formElementAdd = document.querySelector('#popup-add-place-admin');
-
 function formSubmitHandlerAdd (evt) {
     evt.preventDefault();
     appendElementToElementList(nameNewPlace.value, linkNewPlace.value);
@@ -103,46 +101,35 @@ function formSubmitHandlerAdd (evt) {
 }
 formElementAdd.addEventListener('submit', formSubmitHandlerAdd);
 
+//корзина
+elementList.onclick = function (event) {
+    // if (event.target.className !== 'element__button-trash') return;
+    if (event.target.classList.contains('element__button-trash')) {
+        //console.log('Да. Можно удалять');
+        let info = event.target.closest('.element__info');
+        info.remove();
+        return;
+    }
+    if (event.target.classList.contains('element__button-like')) {
+        let likeButton = event.target.closest('.element__button-like');
+        //console.log('Можем сделать лайк! или убрать!');
+        //likeButton.classList.toggle('element__button-like_active');
+        elementClassToggle(likeButton, 'element__button-like_active');
+    }
+}
 
-
-
-
-
-
-
-
-//лайк карточкам
-//  const element = document.querySelectorAll('.element')
-//  element.querySelector('.element__button-like').addEventListener('click', function (evt) {
-//      evt.target.classList.toggle('element__button-like_active');
-//  })
+function elementClassToggle(element, styleName) {
+    element.classList.toggle(styleName);
+}
+// //увеличить картинку
+// const popupWindowImage = document.querySelector('#popup__image');
+// const popupOpenImage = document.querySelector('.element__image');
+// //открыть изображение
+// popupOpenImage.addEventListener('click', function () {
+//     togglePopup(popupWindowImage);
+// })
+// //закрыть изображение с картинкой
 //
-// <table>
-// <tr>
-// <th colspan="3">Квадрат <em>Bagua</em>: Направление, Элемент, Цвет, Значение</th>
-// </tr>
-// <tr>
-// <td>...<strong>Северо-Запад</strong>...</td>
-// <td>...</td>
-// <td>...</td>
-// </tr>
-// <tr>...ещё 2 строки такого же вида...</tr>
-// <tr>...ещё 2 строки такого же вида...</tr>
-// </table>
-// const element = document.querySelector('.element') ;//;
-//
-// element.onclick = function(event) {
-//     let target = event.target; // где был клик?
-// //необходимо проверить наличие стиля element__button-like в массиве стилей target
-//     let event.target = window.getComputedStyle(element__button-like)
-//     if (target.classList === 'element__button-like') {
-//         // и если нашли стиль element__button-like в массиве стилей target, тогда
-//         // делаем тоггл стиля element__button-like_active
-//         highlight(target); // подсветить TD
-//     }
-// };
-//
-// function highlight(td) {
-//     td.classList.toggle('element__button-like_active');
-// }
-
+// // popupCloseButtonImage.addEventListener('click', function() {
+// //     togglePopup(popupWindowImage);
+// // });
