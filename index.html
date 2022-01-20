@@ -23,56 +23,7 @@
       <button type="button" aria-label="Добавить новую локацию" class="profile__button-edd"></button>
     </section>
     <section class="elements">
-      <ul class="element">
-        <li class="element__info">
-          <button type="button" aria-label="Корзина" class="element__button-trash"></button>
-          <img src="./images/kara4aevsk.jpg" class="element__image" alt="Карачаевск" type="button">
-          <div class="element-flex">
-            <h2 class="element__city">Карачаевск</h2>
-            <button type="button" aria-label="Лайк" class="element__button-like"></button>
-          </div>
-        </li>
-        <li class="element__info">
-          <button type="button" aria-label="Корзина" class="element__button-trash"></button>
-          <img src="./images/gora%20el'brus.jpg" class="element__image" alt="Гора">
-          <div class="element-flex">
-            <h2 class="element__city">Гора Эльбрус</h2>
-            <button type="button" aria-label="Лайк" class="element__button-like"></button>
-          </div>
-        </li>
-        <li class="element__info">
-          <button type="button" aria-label="Корзина" class="element__button-trash"></button>
-          <img src="./images/dombai.jpg" class="element__image" alt="Домбай">
-          <div class="element-flex">
-            <h2 class="element__city">Домбай</h2>
-            <button type="button" aria-label="Лайк" class="element__button-like"></button>
-          </div>
-        </li>
-        <li class="element__info">
-          <button type="button" aria-label="Корзина" class="element__button-trash"></button>
-          <img src="./images/gora%20el'brus.jpg" class="element__image" alt="Гора">
-          <div class="element-flex">
-            <h2 class="element__city">Гора Эльбрус</h2>
-            <button type="button" aria-label="Лайк" class="element__button-like"></button>
-          </div>
-        </li>
-        <li class="element__info">
-          <button type="button" aria-label="Корзина" class="element__button-trash"></button>
-          <img src="./images/dombai.jpg" class="element__image" alt="Домбай">
-          <div class="element-flex">
-            <h2 class="element__city">Домбай</h2>
-            <button type="button" aria-label="Лайк" class="element__button-like"></button>
-          </div>
-        </li>
-        <li class="element__info">
-          <button type="button" aria-label="Корзина" class="element__button-trash"></button>
-          <img src="./images/kara4aevsk.jpg" class="element__image" alt="Карачаево">
-          <div class="element-flex">
-            <h2 class="element__city">Карачаево-Черкессия</h2>
-            <button type="button" aria-label="Лайк" class="element__button-like"></button>
-          </div>
-        </li>
-      </ul>
+      <ul class="element"></ul>
     </section>
   </main>
   <footer class="footer">
@@ -102,7 +53,6 @@
     </div>
   </div>
 
-
   <div class="popup" id="popup-add-place">
     <div class="popup__container">
       <button class="popup__button-close" id="popup-add-place-close" type="button"></button>
@@ -115,13 +65,15 @@
     </div>
   </div>
 
-<!--  <div class="popup popup_opened" id="popup-image">-->
-<!--    <div class="popup__container">-->
-<!--      <button class="popup__button-close" id="popup__image-close" type="button"></button>-->
-<!--      <img>-->
-<!--      <h2 class="popup__title"></h2>-->
-<!--    </div>-->
-<!--  </div>-->
+  <div class="popup popup_image" id="popup-image">
+    <div class="popup__container popup__container_image">
+      <button class="popup__button-close" id="popup__image-close" type="button"></button>
+      <figure class="popup__figure">
+        <img alt="" class="popup__image" src="">
+        <figcaption class="popup__caption"></figcaption>
+      </figure>
+    </div>
+  </div>
 
   <script type="text/javascript" src="./script.js" defer></script>
 

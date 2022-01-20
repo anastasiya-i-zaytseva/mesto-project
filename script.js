@@ -12,37 +12,8 @@ const nameNewPlace = document.querySelector('#new-place-name');
 const linkNewPlace = document.querySelector('#new-place-href');
 const formElementAdd = document.querySelector('#popup-add-place-admin');
 const popupCloseButtonImage = document.querySelector('#popup__image-close');
-// const likeButton = document.querySelector('.element__button-like');
-
-// слушаем кнопку редактировать;
-popupOpenButton.addEventListener('click', function(){
-    nameInput.value = document.querySelector('.profile__title').textContent;
-    jobInput.value = document.querySelector('.profile__subtitle').textContent;
-    togglePopup(popupWindow);
-});
-// слушаем кнопку крэстик в попапе
-popupCloseButton.addEventListener('click', function() {
-    togglePopup(popupWindow);
-});
-
-// тумблер открыть-закрыть попап
-function togglePopup(popup) {
-    //popup.classList.toggle('popup_opened');
-    elementClassToggle(popup, 'popup_opened');
-}
-
-//кнопка Сохранить
+const popupWindowImage = document.querySelector('#popup-image');
 const formElement = document.querySelector('.popup__admin');
-
-function formSubmitHandler (evt) {
-    evt.preventDefault();
-    document.querySelector('.profile__title').textContent =  nameInput.value;
-    document.querySelector('.profile__subtitle').textContent =  jobInput.value;
-    togglePopup(popupWindow);
-}
-formElement.addEventListener('submit', formSubmitHandler);
-
-// 6 новых карточек
 const initialCards = [
     {
         name: 'Архыз',
@@ -69,9 +40,15 @@ const initialCards = [
         link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
     }
 ];
-initialCards.forEach(function (element) {
-    appendElementToElementList(element.name, element.link);
-})
+
+function elementClassToggle(element, styleName) {
+    element.classList.toggle(styleName);
+}
+
+// тумблер открыть-закрыть попап
+function togglePopup(popup) {
+    elementClassToggle(popup, 'popup_opened');
+}
 
 function appendElementToElementList(placeName, picLink){
     const initCard = elementTemplate.cloneNode(true);
@@ -80,11 +57,43 @@ function appendElementToElementList(placeName, picLink){
     initCard.querySelector('.element__image').alt = placeName;
     initCard.querySelector('.element__city').textContent = placeName;
 
-    elementList.append(initCard);
+    elementList.prepend(initCard);
 }
 
-//открытие и закрытие добавление новой карточки
+function formSubmitHandler (evt) {
+    evt.preventDefault();
+    document.querySelector('.profile__title').textContent =  nameInput.value;
+    document.querySelector('.profile__subtitle').textContent =  jobInput.value;
+    togglePopup(popupWindow);
+}
 
+function formSubmitHandlerAdd (evt) {
+    evt.preventDefault();
+    appendElementToElementList(nameNewPlace.value, linkNewPlace.value);
+    togglePopup(popupWindowAdd);
+}
+
+// 6 новых карточек
+initialCards.forEach(function (element) {
+    appendElementToElementList(element.name, element.link);
+})
+
+// слушаем кнопку редактировать;
+popupOpenButton.addEventListener('click', function(){
+    nameInput.value = document.querySelector('.profile__title').textContent;
+    jobInput.value = document.querySelector('.profile__subtitle').textContent;
+    togglePopup(popupWindow);
+});
+
+// слушаем кнопку крэстик в попапе
+popupCloseButton.addEventListener('click', function() {
+    togglePopup(popupWindow);
+});
+
+//кнопка Сохранить
+formElement.addEventListener('submit', formSubmitHandler);
+
+//открытие и закрытие добавление новой карточки
 popupOpenButtonAdd.addEventListener('click', function(){
     togglePopup(popupWindowAdd);
 });
@@ -94,42 +103,28 @@ popupCloseButtonAdd.addEventListener('click', function() {
     togglePopup(popupWindowAdd);
 });
 
-function formSubmitHandlerAdd (evt) {
-    evt.preventDefault();
-    appendElementToElementList(nameNewPlace.value, linkNewPlace.value);
-    togglePopup(popupWindowAdd);
-}
 formElementAdd.addEventListener('submit', formSubmitHandlerAdd);
 
 //корзина
 elementList.onclick = function (event) {
-    // if (event.target.className !== 'element__button-trash') return;
     if (event.target.classList.contains('element__button-trash')) {
-        //console.log('Да. Можно удалять');
-        let info = event.target.closest('.element__info');
+        const info = event.target.closest('.element__info');
         info.remove();
         return;
     }
     if (event.target.classList.contains('element__button-like')) {
-        let likeButton = event.target.closest('.element__button-like');
-        //console.log('Можем сделать лайк! или убрать!');
-        //likeButton.classList.toggle('element__button-like_active');
+        const likeButton = event.target.closest('.element__button-like');
         elementClassToggle(likeButton, 'element__button-like_active');
+    }
+    if (event.target.classList.contains('element__image')) {
+        togglePopup(popupWindowImage);
+        document.querySelector('.popup__image').src = event.target.src;
+        document.querySelector('.popup__caption').textContent = event.target.parentNode.querySelector('.element__city').textContent;
+
     }
 }
 
-function elementClassToggle(element, styleName) {
-    element.classList.toggle(styleName);
-}
-// //увеличить картинку
-// const popupWindowImage = document.querySelector('#popup__image');
-// const popupOpenImage = document.querySelector('.element__image');
-// //открыть изображение
-// popupOpenImage.addEventListener('click', function () {
-//     togglePopup(popupWindowImage);
-// })
-// //закрыть изображение с картинкой
-//
-// // popupCloseButtonImage.addEventListener('click', function() {
-// //     togglePopup(popupWindowImage);
-// // });
+//закрыть изображение с картинкой
+popupCloseButtonImage.addEventListener('click', function() {
+    togglePopup(popupWindowImage);
+});
