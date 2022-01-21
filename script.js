@@ -14,6 +14,8 @@ const formElementAdd = document.querySelector('#popup-add-place-admin');
 const popupCloseButtonImage = document.querySelector('#popup__image-close');
 const popupWindowImage = document.querySelector('#popup-image');
 const formElement = document.querySelector('.popup__admin');
+const nameProfile = document.querySelector('.profile__title');
+const jobProfile = document.querySelector('.profile__subtitle');
 const initialCards = [
     {
         name: 'Архыз',
@@ -41,13 +43,13 @@ const initialCards = [
     }
 ];
 
-function elementClassToggle(element, styleName) {
+function objectClassToggle(element, styleName) {
     element.classList.toggle(styleName);
 }
 
 // тумблер открыть-закрыть попап
 function togglePopup(popup) {
-    elementClassToggle(popup, 'popup_opened');
+    objectClassToggle(popup, 'popup_opened');
 }
 
 function appendElementToElementList(placeName, picLink){
@@ -62,8 +64,8 @@ function appendElementToElementList(placeName, picLink){
 
 function formSubmitHandler (evt) {
     evt.preventDefault();
-    document.querySelector('.profile__title').textContent =  nameInput.value;
-    document.querySelector('.profile__subtitle').textContent =  jobInput.value;
+    nameProfile.textContent = nameInput.value;
+    jobProfile.textContent = jobInput.value;
     togglePopup(popupWindow);
 }
 
@@ -71,6 +73,8 @@ function formSubmitHandlerAdd (evt) {
     evt.preventDefault();
     appendElementToElementList(nameNewPlace.value, linkNewPlace.value);
     togglePopup(popupWindowAdd);
+    nameNewPlace.value = "";
+    linkNewPlace.value = "";
 }
 
 // 6 новых карточек
@@ -80,8 +84,8 @@ initialCards.forEach(function (element) {
 
 // слушаем кнопку редактировать;
 popupOpenButton.addEventListener('click', function(){
-    nameInput.value = document.querySelector('.profile__title').textContent;
-    jobInput.value = document.querySelector('.profile__subtitle').textContent;
+    nameInput.value = nameProfile.textContent;
+    jobInput.value = jobProfile.textContent;
     togglePopup(popupWindow);
 });
 
@@ -114,13 +118,13 @@ elementList.onclick = function (event) {
     }
     if (event.target.classList.contains('element__button-like')) {
         const likeButton = event.target.closest('.element__button-like');
-        elementClassToggle(likeButton, 'element__button-like_active');
+        objectClassToggle(likeButton, 'element__button-like_active');
+        return;
     }
     if (event.target.classList.contains('element__image')) {
-        togglePopup(popupWindowImage);
         document.querySelector('.popup__image').src = event.target.src;
         document.querySelector('.popup__caption').textContent = event.target.parentNode.querySelector('.element__city').textContent;
-
+        togglePopup(popupWindowImage);
     }
 }
 
