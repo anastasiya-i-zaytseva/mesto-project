@@ -6,6 +6,7 @@
   background: #000000;
   padding: 45px 200px 60px;
   color: #ffffff;
+  box-sizing: border-box;
 }
 
 @media screen and (max-width:730px) {
