@@ -1,21 +1,19 @@
 const profileOpenButton = document.querySelector('.profile__button-redact');
-const profileCloseButton = document.querySelector('.popup__button-close');
 const profilePopup = document.querySelector('.popup-profile');
 const nameInput = document.querySelector('#title');
 const jobInput = document.querySelector('#subtitle');
 const elementList = document.querySelector('.element');
 const elementTemplate = document.querySelector('.element-template').content;
 const addOpenButton = document.querySelector('.profile__button-edd');
-const addCloseButton = document.querySelector('#popup-add-place-close');
 const addPlacePopup = document.querySelector('.popup-add-place');
 const nameNewPlace = document.querySelector('#new-place-name');
 const linkNewPlace = document.querySelector('#new-place-href');
 const addForm = document.querySelector('#popup-add-place-admin');
-const imageCloseButton = document.querySelector('#popup__image-close');
 const imagePopup = document.querySelector('#popup-image');
 const profileForm = document.querySelector('.popup__admin');
 const profileName = document.querySelector('.profile__title');
 const profileJob = document.querySelector('.profile__subtitle');
+const image = document.querySelector('.popup__image');
 const initialCards = [
     {
         name: 'Архыз',
@@ -57,7 +55,6 @@ function createCard(placeName, picLink) {
     const initCard = elementTemplate.querySelector('.element__info').cloneNode(true);
     const elementImage = initCard.querySelector('.element__image');
     const elementCity = initCard.querySelector('.element__city');
-    const image = document.querySelector('.popup__image');
     elementImage.setAttribute('src', picLink);
     elementImage.setAttribute('alt', placeName);
     elementCity.textContent = placeName;
@@ -109,10 +106,26 @@ profileOpenButton.addEventListener('click', function(){
     togglePopup(profilePopup);
 });
 
-// слушаем кнопку крэстик в попапе
-profileCloseButton.addEventListener('click', function() {
-    togglePopup(profilePopup);
-});
+function closePopup(popup) {
+    popup.classList.remove('popup_opened');
+}
+
+//слушаем Escape
+function closePopupWithEsc(evt) {
+    const popupOpened = document.querySelector('.popup_opened');
+    if(evt.key === 'Escape' && (popupOpened)) {
+        closePopup(popupOpened);
+    }
+}
+
+//слушаем клик на крестик и вне попапа
+document.addEventListener('keydown', closePopupWithEsc);
+
+document.addEventListener('click', function (evt) {
+    if(evt.target.classList.contains('popup') || evt.target.classList.contains('popup__button-close')) {
+        closePopup(document.querySelector('.popup_opened'));
+    }
+})
 
 //кнопка Сохранить
 profileForm.addEventListener('submit', handleProfileFormSubmit);
@@ -122,17 +135,4 @@ addOpenButton.addEventListener('click', function(){
     togglePopup(addPlacePopup);
 });
 
-// слушаем кнопку крэстик в попапе
-addCloseButton.addEventListener('click', function() {
-    togglePopup(addPlacePopup);
-});
-
 addForm.addEventListener('submit', handleAddFormSubmit);
-
-//корзина
-
-
-//закрыть изображение с картинкой
-imageCloseButton.addEventListener('click', function() {
-    togglePopup(imagePopup);
-});
