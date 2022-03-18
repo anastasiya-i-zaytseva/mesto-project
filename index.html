@@ -2,80 +2,126 @@
 <html lang="ru">
 
 <head>
-  <meta charset="UTF-8">
-  <title>mesto-project</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" type="text/css" href="./pages/index.css">
+    <meta charset="UTF-8">
+    <title>mesto-project</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="./pages/index.css">
 </head>
 
 <body class="page">
-  <header class="header">
-    <img src="./images/Mesto.svg" class="logo" alt="Место">
-  </header>
-  <main class="content">
-    <section class="profile">
-      <img src="./images/jak-iv-kusto.jpg" class="profile__avatar" alt="Жак-ив-Кусто">
-      <div class="profile__info">
-        <h1 class="profile__title">Жак-Ив Кусто</h1>
-          <button type="button" aria-label="Редактировать профиль" class="profile__button-redact"></button>
-        <p class="profile__subtitle">Исследователь океана</p>
-      </div>
-      <button type="button" aria-label="Добавить новую локацию" class="profile__button-edd"></button>
-    </section>
-    <section class="elements">
-      <ul class="element"></ul>
-    </section>
-  </main>
-  <footer class="footer">
-    <p class="footer__text">© 2020 Mesto Russia</p>
-  </footer>
+    <header class="header">
+        <img src="./images/Mesto.svg" class="logo" alt="Место">
+    </header>
+    <main class="content">
+        <section class="profile">
+            <img src="./images/jak-iv-kusto.jpg" class="profile__avatar" alt="Жак-ив-Кусто">
+            <div class="profile__info">
+                <h1 class="profile__title">Жак-Ив Кусто</h1>
+                <button type="button" aria-label="Редактировать профиль" class="profile__button-redact"></button>
+                <p class="profile__subtitle">Исследователь океана</p>
+            </div>
+            <button type="button" aria-label="Добавить новую локацию" class="profile__button-edd"></button>
+        </section>
+        <section class="elements">
+            <ul class="element"></ul>
+        </section>
+    </main>
+    <footer class="footer">
+        <p class="footer__text">© 2020 Mesto Russia</p>
+    </footer>
 
-  <template class="element-template">
-    <li class="element__info">
-      <button type="button" aria-label="Корзина" class="element__button-trash"></button>
-      <img src="" class="element__image" alt="">
-      <div class="element-flex">
-        <h2 class="element__city"></h2>
-        <button type="button" aria-label="Лайк" class="element__button-like"></button>
-      </div>
-    </li>
-  </template>
+    <template class="element-template">
+        <li class="element__info">
+            <button type="button" aria-label="Корзина" class="element__button-trash"></button>
+            <img src="" class="element__image" alt="">
+            <div class="element-flex">
+                <h2 class="element__city"></h2>
+                <button type="button" aria-label="Лайк" class="element__button-like"></button>
+            </div>
+        </li>
+    </template>
 
-  <div class="popup popup-profile">
-    <div class="popup__container">
-      <button class="popup__button-close" type="button"></button>
-      <h2 class="popup__title">Редактировать профиль</h2>
-      <form class="popup__admin" name="popup-form">
-        <input class="popup__item" type="text" id="title" name="title" placeholder="Имя" required value="" />
-        <input class="popup__item" type="text" id="subtitle" name="subtitle" placeholder="О себе" required value="" />
-        <button class="popup__button-save" type="submit">Сохранить</button>
-      </form>
+    <div class="popup popup-profile">
+        <div class="popup__container">
+            <button class="popup__button-close" type="button"></button>
+            <h2 class="popup__title">Редактировать профиль</h2>
+            <form class="popup__admin" name="popup-form" novalidate>
+                <input
+                        class="popup__item popup__item_type_title"
+                        type="text"
+                        id="title"
+                        name="title"
+                        autocomplete="off"
+                        minlength="2"
+                        maxlength="40"
+                        placeholder="Имя"
+                        required
+                        value=""
+                />
+                <span class="error" id="title-error"></span>
+                <input
+                        class="popup__item popup__item_type_subtitle"
+                        type="text"
+                        id="subtitle"
+                        name="subtitle"
+                        autocomplete="off"
+                        minlength="2"
+                        maxlength="200"
+                        placeholder="О себе"
+                        required
+                        value=""
+                />
+                <span class="error" id="subtitle-error"></span>
+                <button class="popup__button-save" type="submit">Сохранить</button>
+            </form>
+        </div>
     </div>
-  </div>
 
-  <div class="popup popup-add-place">
-    <div class="popup__container">
-      <button class="popup__button-close" id="popup-add-place-close" type="button"></button>
-      <h2 class="popup__title">Новое место</h2>
-      <form class="popup__admin" id="popup-add-place-admin" name="popup-form">
-        <input class="popup__item" type="text" id="new-place-name" name="title" placeholder="Название" required value="" />
-        <input class="popup__item" type="text" id="new-place-href" name="subtitle" placeholder="Ссылка на картинку" required value="" />
-        <button class="popup__button-save" id="popup-create-place" type="submit">Создать</button>
-      </form>
+    <div class="popup popup-add-place">
+        <div class="popup__container">
+            <button class="popup__button-close" type="button"></button>
+            <h2 class="popup__title">Новое место</h2>
+            <form class="popup__admin" id="popup-add-place-admin" name="popup-form" novalidate>
+                <input
+                        class="popup__item popup__item_type_new-place-name"
+                        type="text"
+                        id="title-place"
+                        name="title-place"
+                        autocomplete="off"
+                        minlength="2"
+                        maxlength="30"
+                        placeholder="Название"
+                        required
+                        value=""
+                />
+                <span class="error" id="title-place-error"></span>
+                <input
+                        class="popup__item popup__item_type_link-url"
+                        type="url"
+                        id="link"
+                        name="link"
+                        autocomplete="off"
+                        placeholder="Ссылка на картинку"
+                        required
+                        value=""
+                />
+                <span class="error" id="link-error"></span>
+                <button class="popup__button-save" id="popup-create-place" type="submit">Создать</button>
+            </form>
+        </div>
     </div>
-  </div>
 
-  <div class="popup popup_image" id="popup-image">
-    <div class="popup__container popup__container_image">
-      <button class="popup__button-close" id="popup__image-close" type="button"></button>
-      <figure class="popup__figure">
-        <img alt="" class="popup__image" src="">
-        <figcaption class="popup__caption"></figcaption>
-      </figure>
+    <div class="popup popup_image" id="popup-image">
+        <div class="popup__container popup__container_image">
+            <button class="popup__button-close" type="button"></button>
+            <figure class="popup__figure">
+                <img alt="" class="popup__image" src="">
+                <figcaption class="popup__caption"></figcaption>
+            </figure>
+        </div>
     </div>
-  </div>
 
-  <script type="text/javascript" src="./script.js" defer></script>
+    <script type="text/javascript" src="./script.js" defer></script>
 
 </body>
 
