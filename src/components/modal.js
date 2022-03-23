@@ -1,9 +1,33 @@
+let popupOpened;
+
 import { profileForm,
     profilePopup, nameInput, jobInput,
     addPlacePopup, nameNewPlace, linkNewPlace,
     addForm, profileName, profileJob} from './index.js';
-import {openPopup, closePopup, popupOpened} from './utils';
+
 import {appendElement} from './card.js';
+import {toggleClass} from './utils.js';
+
+
+// тумблер открыть-закрыть попап
+function togglePopup(popup) {
+    toggleClass(popup, 'popup_opened');
+}
+
+function closePopup(popup) {
+    document.removeListener('keydown');
+    document.removeListener('click');
+    togglePopup(popup);
+    //popup.classList.remove('popup_opened');
+}
+
+function openPopup(popup) {
+    popupOpened = popup;
+    document.addEventListener('keydown', closePopupWithEsc);
+    document.addEventListener('click', closePopupWithClick);
+    togglePopup(popup);
+}
+
 
 // слушаем кнопку редактировать;
 export function openProfilePopup(){
@@ -47,4 +71,7 @@ function submitPictureForm(evt) {
 }
 
 addForm.addEventListener('submit', submitPictureForm);
+
+
+
 

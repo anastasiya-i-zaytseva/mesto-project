@@ -1,10 +1,11 @@
 
 import {elementList, elementTemplate, imagePopup, image, initialCards} from './index.js';
-import {openPopup} from './utils.js';
+import {toggleClass} from './utils.js';
 
 
 function likeCard(evt) {
-    evt.target.classList.toggle('element__button-like_active');
+    toggleClass(evt.target, 'element__button-like_active');
+    //evt.target.classList.toggle('element__button-like_active');
 }
 function removeCard(evt) {
     evt.target.closest('.element__info').remove();
