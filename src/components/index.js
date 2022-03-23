@@ -1,3 +1,9 @@
+
+import '../styles/index.css';
+import {setEventListers} from './validate.js';
+import {openProfilePopup, openPlacePopup} from './modal.js';
+
+
 export const profileOpenButton = document.querySelector('.profile__button-redact');
 export const profilePopup = document.querySelector('.popup-profile');
 export const nameInput = document.querySelector('#title');
@@ -48,6 +54,6 @@ export const enableValidation = ({formSelector, ...rest}) => {
         setEventListers(formElement, rest)
     })
 }
-
-import '../styles/index.css';
-import {setEventListers} from './validate.js';
+profileOpenButton.addEventListener('click', openProfilePopup);
+//открытие и закрытие добавление новой карточки
+addOpenButton.addEventListener('click', openPlacePopup);

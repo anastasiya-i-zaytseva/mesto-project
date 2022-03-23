@@ -1,54 +1,50 @@
+import { profileForm,
+    profilePopup, nameInput, jobInput,
+    addPlacePopup, nameNewPlace, linkNewPlace,
+    addForm, profileName, profileJob} from './index.js';
+import {openPopup, closePopup, popupOpened} from './utils';
+import {appendElement} from './card.js';
+
 // слушаем кнопку редактировать;
-profileOpenButton.addEventListener('click', function(){
+export function openProfilePopup(){
     nameInput.value = profileName.textContent;
     jobInput.value = profileJob.textContent;
-    togglePopup(profilePopup);
-});
+    openPopup(profilePopup);
+}
 
 //слушаем Escape
-function closePopupWithEsc(evt) {
-    const popupOpened = document.querySelector('.popup_opened');
+export function closePopupWithEsc(evt) {
     if(evt.key === 'Escape' && (popupOpened)) {
         closePopup(popupOpened);
     }
 }
-
-//слушаем клик на крестик и вне попапа
-document.addEventListener('keydown', closePopupWithEsc);
-
-document.addEventListener('click', function (evt) {
+export function closePopupWithClick(evt) {
     if(evt.target.classList.contains('popup') || evt.target.classList.contains('popup__button-close')) {
-        closePopup(document.querySelector('.popup_opened'));
+        closePopup(popupOpened);
     }
-})
+}
 
 //кнопка Сохранить
-profileForm.addEventListener('submit', handleProfileFormSubmit);
+profileForm.addEventListener('submit', submitProfile);
 
-//открытие и закрытие добавление новой карточки
-addOpenButton.addEventListener('click', function(){
-    togglePopup(addPlacePopup);
-});
+export function openPlacePopup(evt){
+    openPopup(addPlacePopup);
+}
 
-function handleProfileFormSubmit(evt) {
+function submitProfile(evt) {
     evt.preventDefault();
     profileName.textContent = nameInput.value;
     profileJob.textContent = jobInput.value;
-    togglePopup(profilePopup);
+    closePopup(profilePopup);
 }
 
-function handleAddFormSubmit(evt) {
+function submitPictureForm(evt) {
     evt.preventDefault();
     appendElement(nameNewPlace.value, linkNewPlace.value);
-    togglePopup(addPlacePopup);
+    closePopup(addPlacePopup);
     nameNewPlace.value = "";
     linkNewPlace.value = "";
 }
 
-addForm.addEventListener('submit', handleAddFormSubmit);
+addForm.addEventListener('submit', submitPictureForm);
 
-import {profileOpenButton, addOpenButton, profileForm,
-    profilePopup, nameInput, jobInput,
-    addPlacePopup, nameNewPlace, linkNewPlace,
-    addForm, profileName, profileJob} from './index.js';
-import {togglePopup, closePopup} from './utils';

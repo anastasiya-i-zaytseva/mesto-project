@@ -1,3 +1,6 @@
+import {closePopupWithEsc, closePopupWithClick} from './modal.js';
+export let popupOpened;
+
 function toggleClass(object, styleName) {
     object.classList.toggle(styleName);
 }
@@ -8,6 +11,15 @@ export function togglePopup(popup) {
 }
 
 export function closePopup(popup) {
-    popup.classList.remove('popup_opened');
+    document.removeListener('keydown');
+    document.removeListener('click');
+    togglePopup(popup);
+    //popup.classList.remove('popup_opened');
 }
 
+export function openPopup(popup) {
+    popupOpened = popup;
+    document.addEventListener('keydown', closePopupWithEsc);
+    document.addEventListener('click', closePopupWithClick);
+    togglePopup(popup);
+}
