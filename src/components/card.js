@@ -1,12 +1,11 @@
-
-import {elementList, elementTemplate, imagePopup, image, initialCards} from './index.js';
+import {elementList, elementTemplate, imagePopup, image, initialCards} from './constants.js';
 import {toggleClass} from './utils.js';
-
+import {openPopup} from './modal.js';
 
 function likeCard(evt) {
     toggleClass(evt.target, 'element__button-like_active');
-    //evt.target.classList.toggle('element__button-like_active');
 }
+
 function removeCard(evt) {
     evt.target.closest('.element__info').remove();
 }

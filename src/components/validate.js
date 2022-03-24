@@ -45,7 +45,7 @@ export const setEventListers = (formElement, {inputSelector, submitButtonSelecto
     })
 }
 
-const validationConfig = {
+export const validationConfig = {
     formSelector: '.popup__admin',
     inputSelector: '.popup__item',
     submitButtonSelector: '.popup__button-save',
@@ -54,7 +54,3 @@ const validationConfig = {
 }
 
 const {inputSelector, ...rest} = validationConfig;
-
-enableValidation(validationConfig);
-
-import {enableValidation} from './index.js';
