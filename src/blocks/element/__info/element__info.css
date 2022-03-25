@@ -4,4 +4,9 @@
   border-radius: 10px;
   margin: 0 auto;
   width: 100%;
+  /*z-index: 2;*/
+  display: flex;
+  flex-wrap: wrap;
+  overflow: hidden;
+  position: relative;
 }

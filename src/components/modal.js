@@ -1,6 +1,6 @@
-import {profilePopup, nameInput, jobInput, addPlacePopup, nameNewPlace, linkNewPlace, profileName, profileJob} from './constants.js';
-import {appendElement} from './card.js';
+import {profilePopup, nameInput, jobInput, addPlacePopup, profileName, profileJob} from './constants.js';
 import {toggleClass} from './utils.js';
+import {toggleButtonState} from "./utils";
 
 let popupOpened;
 
@@ -9,7 +9,7 @@ function togglePopup(popup) {
     toggleClass(popup, 'popup_opened');
 }
 
-function closePopup(popup) {
+export function closePopup(popup) {
     document.removeEventListener('keydown', closePopupWithEsc);
     document.removeEventListener('click', closePopupWithClick);
     togglePopup(popup);
@@ -42,21 +42,8 @@ export function closePopupWithClick(evt) {
     }
 }
 
-export function openPlacePopup(evt){
+export function openPlacePopup(){
+    const submitButton = document.querySelector('#popup-create-place');
+    toggleButtonState(submitButton, false, 'popup__button_invalid');
     openPopup(addPlacePopup);
-}
-
-export function submitProfile(evt) {
-    evt.preventDefault();
-    profileName.textContent = nameInput.value;
-    profileJob.textContent = jobInput.value;
-    closePopup(profilePopup);
-}
-
-export function submitPictureForm(evt) {
-    evt.preventDefault();
-    appendElement(nameNewPlace.value, linkNewPlace.value);
-    closePopup(addPlacePopup);
-    nameNewPlace.value = "";
-    linkNewPlace.value = "";
 }

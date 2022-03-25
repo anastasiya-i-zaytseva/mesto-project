@@ -1,4 +1,4 @@
-import {elementList, elementTemplate, imagePopup, image, initialCards} from './constants.js';
+import {elementList, elementTemplate, imagePopup, image} from './constants.js';
 import {toggleClass} from './utils.js';
 import {openPopup} from './modal.js';
 
@@ -32,8 +32,3 @@ export function appendElement(placeName, picLink){
     const cardElement = createCard(placeName, picLink)
     elementList.prepend(cardElement);
 }
-
-// 6 новых карточек
-initialCards.forEach(function (element) {
-    appendElement(element.name, element.link);
-})

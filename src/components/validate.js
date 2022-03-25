@@ -1,3 +1,5 @@
+import {toggleButtonState} from './utils.js';
+
 //Валидация форм
 const showError = (errorElement, inputElement, inputErrorClass) => {
     errorElement.textContent = inputElement.validationMessage;
@@ -17,16 +19,6 @@ const checkInputValidity = (formElement, inputElement, config) => {
         showError(errorElement, inputElement, config);
     } else {
         hideError(errorElement, inputElement, config);
-    }
-}
-
-const toggleButtonState = (button, isActive, inactiveButtonClass) => {
-    if(isActive){
-        button.classList.remove(inactiveButtonClass);
-        button.disabled = false;
-    } else {
-        button.classList.add(inactiveButtonClass);
-        button.disabled = 'disabled';
     }
 }
 
@@ -51,6 +43,14 @@ export const validationConfig = {
     submitButtonSelector: '.popup__button-save',
     inactiveButtonClass: 'popup__button_invalid',
     inputErrorClass: 'popup__item_state_invalid',
+}
+
+//Валидация форм
+export const enableValidation = ({formSelector, ...rest}) => {
+    const forms = document.querySelectorAll(formSelector);
+    Array.from(forms).forEach(formElement => {
+        setEventListers(formElement, rest)
+    })
 }
 
 const {inputSelector, ...rest} = validationConfig;
