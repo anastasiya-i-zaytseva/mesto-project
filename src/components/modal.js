@@ -1,4 +1,5 @@
-import {profilePopup, nameInput, jobInput, addPlacePopup, profileName, profileJob} from './constants.js';
+import {profilePopup, nameInput, jobInput, addPlacePopup, profileName, profileJob,
+    profileImageOpen, profileImageForm} from './constants.js';
 import {toggleClass} from './utils.js';
 import {toggleButtonState} from "./utils";
 
@@ -46,4 +47,8 @@ export function openPlacePopup(){
     const submitButton = document.querySelector('#popup-create-place');
     toggleButtonState(submitButton, false, 'popup__button_invalid');
     openPopup(addPlacePopup);
+}
+
+export function openProfileImageEdit() {
+    openPopup(profileImageForm)
 }

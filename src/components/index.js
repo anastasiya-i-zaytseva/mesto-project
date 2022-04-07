@@ -1,18 +1,20 @@
 import '../styles/index.css';
 import {validationConfig, enableValidation} from './validate.js';
-import {openProfilePopup, openPlacePopup, closePopup} from './modal.js';
+import {openProfilePopup, openPlacePopup, closePopup, openProfileImageEdit} from './modal.js';
 import {profileOpenButton, addOpenButton} from './constants.js';
 import {
     addForm, addPlacePopup,
-    initialCards,
     jobInput, linkNewPlace,
     nameInput, nameNewPlace,
-    profileForm,
-    profileJob,
-    profileName,
-    profilePopup
+    profileForm, profileJob,
+    profileName, profilePopup,
+    profileImageOpen, linkProfileImage,
+    profileAvatar, btnSubmitAvatar, profileImageForm
 } from "./constants";
 import {appendElement} from "./card";
+import {getCardsFromServer, updateProfileInfo, dataId, addNewCard} from"./api";
+
+const initCards2 = getCardsFromServer();
 
 enableValidation(validationConfig);
 
@@ -26,13 +28,22 @@ profileForm.addEventListener('submit', submitProfile);
 
 addForm.addEventListener('submit', submitPictureForm);
 
-// 6 новых карточек
-initialCards.forEach(function (element) {
-    appendElement(element.name, element.link);
-})
+profileImageOpen.addEventListener('click', openProfileImageEdit);
+
+btnSubmitAvatar.addEventListener('click', submitProfileImageEdit);
+
+// новые карточки
+initCards2.then((initialCards2 => {
+    initialCards2.forEach(function (element) {
+        appendElement(element.name, element.link);
+    })
+}))
 
 function submitProfile(evt) {
     evt.preventDefault();
+    updateProfileInfo(dataId).then({
+
+    })
     profileName.textContent = nameInput.value;
     profileJob.textContent = jobInput.value;
     closePopup(profilePopup);
@@ -40,8 +51,20 @@ function submitProfile(evt) {
 
 function submitPictureForm(evt) {
     evt.preventDefault();
+    addNewCard(data).then({
+
+    })
     appendElement(nameNewPlace.value, linkNewPlace.value);
     closePopup(addPlacePopup);
     nameNewPlace.value = "";
     linkNewPlace.value = "";
+}
+
+function submitProfileImageEdit(evt) {
+    evt.preventDefault();
+    console.log(linkProfileImage)
+    profileAvatar.src = linkProfileImage.value;
+    profileAvatar.alt = "Здесь должна быть картинка с аватаркой";
+    closePopup(profileImageForm);
+    linkProfileImage.value = "";
 }
