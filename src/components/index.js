@@ -9,12 +9,12 @@ import {
     profileForm, profileJob,
     profileName, profilePopup,
     profileImageOpen, linkProfileImage,
-    profileAvatar, btnSubmitAvatar, profileImageForm
-} from "./constants";
-import {appendElement} from "./card";
-import {getCardsFromServer, updateProfileInfo, dataId, addNewCard} from"./api";
+    profileAvatar, btnSubmitAvatar,
+    profileImageForm} from "./constants";
+import {appendCard} from "./card";
+import {getCardsFromServer, updateProfileInfo, addNewCard} from"./api";
 
-const initCards2 = getCardsFromServer();
+//const initCards2 = getCardsFromServer();
 
 enableValidation(validationConfig);
 
@@ -33,15 +33,16 @@ profileImageOpen.addEventListener('click', openProfileImageEdit);
 btnSubmitAvatar.addEventListener('click', submitProfileImageEdit);
 
 // новые карточки
-initCards2.then((initialCards2 => {
-    initialCards2.forEach(function (element) {
-        appendElement(element.name, element.link);
+getCardsFromServer().then((initialCards => {
+    initialCards.forEach(function (element) {
+        appendCard(element);
     })
+    //onsole.log(initCards2)
 }))
 
 function submitProfile(evt) {
     evt.preventDefault();
-    updateProfileInfo(dataId).then({
+    updateProfileInfo().then({
 
     })
     profileName.textContent = nameInput.value;
@@ -54,15 +55,15 @@ function submitPictureForm(evt) {
     addNewCard(data).then({
 
     })
-    appendElement(nameNewPlace.value, linkNewPlace.value);
-    closePopup(addPlacePopup);
-    nameNewPlace.value = "";
-    linkNewPlace.value = "";
+
+    //appendElement(nameNewPlace.value, linkNewPlace.value);
+    //closePopup(addPlacePopup);
+    //nameNewPlace.value = "";
+    //linkNewPlace.value = "";
 }
 
 function submitProfileImageEdit(evt) {
     evt.preventDefault();
-    console.log(linkProfileImage)
     profileAvatar.src = linkProfileImage.value;
     profileAvatar.alt = "Здесь должна быть картинка с аватаркой";
     closePopup(profileImageForm);
